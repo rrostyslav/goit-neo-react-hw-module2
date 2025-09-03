@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.container h1 {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.container p {
+  font-size: 20px;
+}
