@@ -1,0 +1,5 @@
+pre-commit:
+  jobs:
+    - run: npx eslint {staged_files}
+      glob: '*.{js,jsx}'
+      stage_fixed: true
