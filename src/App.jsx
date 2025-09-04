@@ -1,5 +1,6 @@
 import Description from '@/components/Description';
 import Feedback from '@/components/Feedback';
+import Notification from '@/components/Notification';
 import Options from '@/components/Options';
 import usePersistedState from '@/hooks/usePersistedState';
 
@@ -35,11 +36,14 @@ export default function App() {
     <div className={css.container}>
       <Description />
       <Options onUpdateFeedback={updateFeedback} onReset={resetFeedback} />
-      <Feedback
-        feedback={feedbackStorage}
-        totalFeedback={totalFeedback}
-        positiveFeedback={positiveFeedback}
-      />
+      {totalFeedback === 0 && <Notification />}
+      {totalFeedback > 0 && (
+        <Feedback
+          feedback={feedbackStorage}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      )}
     </div>
   );
 }
