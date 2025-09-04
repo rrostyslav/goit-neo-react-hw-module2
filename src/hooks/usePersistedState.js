@@ -2,8 +2,14 @@ import { useState } from 'react';
 
 const usePersistedState = (key, initialValue) => {
   const [state, setState] = useState(() => {
+    const persistedState = localStorage.getItem(key);
+
+    if (!persistedState) {
+      localStorage.setItem(key, JSON.stringify(initialValue));
+      return initialValue;
+    }
+
     try {
-      const persistedState = localStorage.getItem(key);
       return persistedState ? JSON.parse(persistedState) : initialValue;
     } catch {
       return initialValue;
